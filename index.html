@@ -7,6 +7,14 @@
     <title>Guía de Hacking Ético</title>
     <link rel="stylesheet" href="stiles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+    <style>
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+        }
+    </style>
 </head>
 
 <body>
@@ -14,9 +22,12 @@
     <div class="hacker-scanline"></div>
     <header>
         <h1 class="typing"><i class="fas fa-user-secret"></i> Guía de Hacking Ético</h1>
+        <button class="nav-toggle" aria-label="Toggle navigation">
+            <span class="nav-toggle-label"></span>
+        </button>
     </header>
     <nav>
-        <ul>
+        <ul id="nav-menu">
             <li><a href="#ley21459">Ley 21.459</a></li>
             <li><a href="#footprinting">Footprinting</a></li>
             <li><a href="#amenazas">Amenazas</a></li>
@@ -38,8 +49,7 @@
         </ul>
     </nav>
     <main class="container">
-       
-        <section id="ley21459">
+        <section id="ley21459" class="section">
             <h2><i class="fas fa-gavel"></i> Ley 21.459 - Delitos Informáticos</h2>
             <div class="expandable">
                 <h3>Artículo 1: Ataque a la integridad de un sistema informático <span class="blink">_</span></h3>
@@ -99,7 +109,7 @@
             </div>
         </section>
 
-        <section id="footprinting">
+        <section id="footprinting" class="section">
             <h2><i class="fas fa-search"></i> Footprinting</h2>
             <div class="expandable">
                 <h3>Footprinting Pasivo</h3>
@@ -129,9 +139,8 @@
             </div>
         </section>
 
-        <section id="amenazas">
+        <section id="amenazas" class="section">
             <h2><i class="fas fa-exclamation-triangle"></i> Amenazas de Seguridad</h2>
-            <!-- Existing content remains -->
             <div class="expandable">
                 <h3>Amenazas Naturales</h3>
                 <div class="expandable-content">
@@ -189,9 +198,8 @@
             </div>
         </section>
 
-        <section id="vectores">
+        <section id="vectores" class="section">
             <h2><i class="fas fa-vector-square"></i> Vectores de Ataque</h2>
-            <!-- Existing content remains -->
             <div class="expandable">
                 <h3>Vector de Host</h3>
                 <div class="expandable-content">
@@ -230,13 +238,11 @@
                         <li>Escucha</li>
                         <li>Supervisión</li>
                     </ul>
-
                 </div>
             </div>
         </section>
 
-
-        <section id="fases">
+        <section id="fases" class="section">
             <h2><i class="fas fa-chart-line"></i> Fases de un Ataque</h2>
             <ol>
                 <li>
@@ -302,9 +308,8 @@
             </ol>
         </section>
 
-        <section id="defensa">
+        <section id="defensa" class="section">
             <h2><i class="fas fa-shield-alt"></i> Defensa en Profundidad</h2>
-            <!-- Existing content remains -->
             <div class="expandable">
                 <h3>Política de Seguridad</h3>
                 <div class="expandable-content">
@@ -410,7 +415,7 @@
             </div>
         </section>
 
-        <section id="herramientas">
+        <section id="herramientas" class="section">
             <h2><i class="fas fa-tools"></i> Herramientas de Hacking Ético</h2>
             <div class="expandable">
                 <h3>Nmap</h3>
@@ -438,10 +443,9 @@ nmap --script vuln 192.168.1.1
                     </code></pre>
                 </div>
             </div>
-          
         </section>
 
-        <section id="arquitectura">
+        <section id="arquitectura" class="section">
             <h2><i class="fas fa-sitemap"></i> Arquitectura de Seguridad</h2>
             <div class="expandable">
                 <h3>Política de Seguridad</h3>
@@ -477,11 +481,8 @@ nmap --script vuln 192.168.1.1
             </div>
         </section>
 
-
-
-        <section id="kali-linux">
+        <section id="kali-linux" class="section">
             <h2><i class="fab fa-linux"></i> Kali Linux y Herramientas</h2>
-            <!-- Existing content remains -->
             <div class="expandable">
                 <h3>Kali Linux <span class="blink">_</span></h3>
                 <div class="expandable-content">
@@ -522,7 +523,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="incident-response">
+        <section id="incident-response" class="section">
             <h2><i class="fas fa-fire-extinguisher"></i> Respuesta a Incidentes</h2>
             <div class="expandable">
                 <h3>Fases de Respuesta a Incidentes <span class="blink">_</span></h3>
@@ -570,7 +571,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="ntfs-streams">
+        <section id="ntfs-streams" class="section">
             <h2><i class="fas fa-stream"></i> NTFS Streams</h2>
             <div class="expandable">
                 <h3>Flujos Alternativos de Datos (ADS) <span class="blink">_</span></h3>
@@ -593,9 +594,8 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="web-attacks">
+        <section id="web-attacks" class="section">
             <h2><i class="fas fa-globe"></i> Ataques Web</h2>
-            <!-- Existing content remains -->
             <div class="expandable">
                 <h3>Inyección SQL <span class="blink">_</span></h3>
                 <div class="expandable-content">
@@ -689,7 +689,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="network-attacks">
+        <section id="network-attacks" class="section">
             <h2><i class="fas fa-network-wired"></i> Ataques de Red</h2>
             <div class="expandable">
                 <h3>Fingerprinting <span class="blink">_</span></h3>
@@ -719,7 +719,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="network-security">
+        <section id="network-security" class="section">
             <h2><i class="fas fa-shield-alt"></i> Seguridad de Red</h2>
             <div class="expandable">
                 <h3>Proxy <span class="blink">_</span></h3>
@@ -753,7 +753,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="network-models">
+        <section id="network-models" class="section">
             <h2><i class="fas fa-layer-group"></i> Modelos de Red</h2>
             <div class="expandable">
                 <h3>Modelo OSI <span class="blink">_</span></h3>
@@ -789,7 +789,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="network-attacks-advanced">
+        <section id="network-attacks-advanced" class="section">
             <h2><i class="fas fa-user-ninja"></i> Ataques de Red Avanzados</h2>
             <div class="expandable">
                 <h3>Hijacking <span class="blink">_</span></h3>
@@ -807,7 +807,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="wireless-security">
+        <section id="wireless-security" class="section">
             <h2><i class="fas fa-wifi"></i> Seguridad en Redes Inalámbricas</h2>
             <div class="expandable">
                 <h3>Encriptación de Redes Wi-Fi <span class="blink">_</span></h3>
@@ -827,7 +827,7 @@ nmap -sS -O -sV 192.168.1.1
             </div>
         </section>
 
-        <section id="log-analysis">
+        <section id="log-analysis" class="section">
             <h2><i class="fas fa-search"></i> Análisis de Logs</h2>
             <div class="expandable">
                 <h3>Registro de Eventos de Windows <span class="blink">_</span></h3>
@@ -909,7 +909,60 @@ nmap -sS -O -sV 192.168.1.1
         <p>&copy; 2024 Resumen de Hacking Ético Damian jinel. Todos los derechos reservados.</p>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('#nav-menu a');
+            const navToggle = document.querySelector('.nav-toggle');
+            const nav = document.querySelector('nav');
+
+            // Function to show a specific section
+            function showSection(sectionId) {
+                sections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                const activeSection = document.querySelector(sectionId);
+                if (activeSection) {
+                    activeSection.classList.add('active');
+                }
+            }
+
+            // Add click event listeners to navigation links
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const sectionId = link.getAttribute('href');
+                    showSection(sectionId);
+                    if (window.innerWidth <= 768) {
+                        nav.classList.remove('active');
+                        navToggle.classList.remove('active');
+                    }
+                });
+            });
+
+            // Show the first section by default
+            showSection('#ley21459');
+
+            // Toggle mobile menu
+            navToggle.addEventListener('click', () => {
+                nav.classList.toggle('active');
+                navToggle.classList.toggle('active');
+            });
+
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!nav.contains(e.target) && !navToggle.contains(e.target) && window.innerWidth <= 768) {
+                    nav.classList.remove('active');
+                    navToggle.classList.remove('active');
+                }
+            });
+
+            // Your existing JavaScript code here
+            // ... (typing effect, expandable sections, matrix background, etc.) ...
+        });
+    </script>
     <script src="modo_hacker.js"></script>
+
 </body>
 
 </html>

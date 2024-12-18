@@ -167,21 +167,6 @@ footer {
   50% { opacity: 0; }
 }
 
-@media (max-width: 768px) {
-  h1 {
-    font-size: 2rem;
-  }
-
-  nav ul {
-    flex-direction: column;
-  }
-
-  .container {
-    padding: 1rem;
-  }
-}
-
-/* Additional styles for new sections */
 .expandable h4 {
   color: var(--secondary-color);
   margin-top: 1rem;
@@ -212,15 +197,103 @@ code {
   font-size: 0.9em;
 }
 
-/* Responsive adjustments */
+/* Mobile styles */
 @media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  /* Hamburger menu styles */
+  .nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 1000;
+  }
+
+  .nav-toggle:focus {
+    outline: none;
+  }
+
+  .nav-toggle-label {
+    display: block;
+    width: 30px;
+    height: 2px;
+    background-color: var(--text-color);
+    position: relative;
+    transition: background-color 0.3s ease;
+  }
+
+  .nav-toggle-label::before,
+  .nav-toggle-label::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-toggle-label::before {
+    transform: translateY(-8px);
+  }
+
+  .nav-toggle-label::after {
+    transform: translateY(8px);
+  }
+
+  .nav-toggle.active .nav-toggle-label {
+    background-color: transparent;
+  }
+
+  .nav-toggle.active .nav-toggle-label::before {
+    transform: rotate(45deg);
+  }
+
+  .nav-toggle.active .nav-toggle-label::after {
+    transform: rotate(-45deg);
+  }
+
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 999;
+  }
+
+  nav.active {
+    transform: translateX(0);
+  }
+
   nav ul {
     flex-direction: column;
     align-items: center;
   }
 
   nav li {
-    margin: 0.25rem 0;
+    margin: 1rem 0;
+  }
+
+  nav a {
+    font-size: 1.2rem;
   }
 
   .expandable h3 {
@@ -231,4 +304,3 @@ code {
     font-size: 0.8em;
   }
 }
-

@@ -475,6 +475,15 @@
 # Escanear red por rango de IP
 nmap 192.168.1.1-254
 
+# Escanear puertos abiertos o cerrados
+nmap -sT 192.168.1.1 o el Dominio
+
+# Detección de servicios y versiones
+nmap -sV 192.168.1.1
+
+#Deteccion de subdominios 
+sublist3r -d dominio o ip 
+
 # Escanear puerto determinado
 nmap -p 80 192.168.1.1
 
@@ -487,18 +496,31 @@ nmap -p- 192.168.1.1
 # Escanear los x primeros puertos en la IP determinada
 nmap --top-ports 100 192.168.1.1
 
-# Escaneo sigiloso SYN con detección de OS y versiones
-nmap -sS -O -sV 192.168.1.1
+#deteccion de dns 
+nslookup dominio o ip 
 
-# Detección de servicios y versiones
-nmap -sV 192.168.1.1
+#deteccion de sistemas operativo de la pagina o dominio
+whatweb dominio o ip 
 
-# Escaneo sigiloso SYN
-nmap -sS 192.168.1.1
+#detecta si el dominio tiene buena conexion del dominio se ejecuta en el terminal
+traceroute  dominio o ip 
 
-# Escaneo con scripts NSE
-nmap --script vuln 192.168.1.1
+#detecta los datos enviado y recibidos 
+ping dominio o ip 
+
                     </code></pre>
+
+            <h3>Comandos en el terminal <span class="blink">_</span></h3>
+            
+                    <pre><code>
+                        
+#detecta si el dominio tiene buena conexion del dominio se ejecuta en el terminal
+traceroute  dominio o ip 
+
+#detecta los datos enviado y recibidos 
+ping dominio o ip 
+                    </code></pre>
+
                     <p>Recuerda siempre obtener permiso antes de escanear redes que no te pertenezcan.</p>
                 </div>
             </div>

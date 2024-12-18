@@ -229,6 +229,7 @@ code {
   }
   ul{
     display: block;
+    font: menu;
   }
 
   nav li {

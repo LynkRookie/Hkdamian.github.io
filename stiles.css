@@ -226,6 +226,9 @@ code {
     align-items: center;
     display: block;
   }
+  ul{
+    display: block;
+  }
 
   nav li {
     margin: 1rem 0;

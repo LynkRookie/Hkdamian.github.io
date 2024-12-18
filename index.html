@@ -34,7 +34,6 @@
             <li><a href="#vectores">Vectores de Ataque</a></li>
             <li><a href="#fases">Fases de un Ataque</a></li>
             <li><a href="#defensa">Defensa en Profundidad</a></li>
-            <li><a href="#herramientas">Herramientas</a></li>
             <li><a href="#arquitectura">Arquitectura de Seguridad</a></li>
             <li><a href="#kali-linux">Kali Linux</a></li>
             <li><a href="#incident-response">Respuesta a Incidentes</a></li>
@@ -421,26 +420,7 @@
                 <h3>Nmap</h3>
                 <div class="expandable-content">
                     <p>Herramienta de código abierto para descubrimiento de redes y auditoría de seguridad.</p>
-                    <h4>Comandos comunes:</h4>
-                    <pre><code>
-# Escaneo básico de red
-nmap 192.168.1.0/24
-
-# Escaneo de puertos específicos
-nmap -p 80,443,3306 192.168.1.1
-
-# Escaneo de todos los puertos
-nmap -p- 192.168.1.1
-
-# Detección de servicios y versiones
-nmap -sV 192.168.1.1
-
-# Escaneo sigiloso SYN
-nmap -sS 192.168.1.1
-
-# Escaneo con scripts NSE
-nmap --script vuln 192.168.1.1
-                    </code></pre>
+                   
                 </div>
             </div>
         </section>
@@ -512,11 +492,23 @@ nmap -p 80 192.168.1.1
 # Escanear n puertos en IP determinada
 nmap -p 1-1000 192.168.1.1
 
+# Escaneo de todos los puertos
+nmap -p- 192.168.1.1
+
 # Escanear los x primeros puertos en la IP determinada
 nmap --top-ports 100 192.168.1.1
 
 # Escaneo sigiloso SYN con detección de OS y versiones
 nmap -sS -O -sV 192.168.1.1
+
+# Detección de servicios y versiones
+nmap -sV 192.168.1.1
+
+# Escaneo sigiloso SYN
+nmap -sS 192.168.1.1
+
+# Escaneo con scripts NSE
+nmap --script vuln 192.168.1.1
                     </code></pre>
                     <p>Recuerda siempre obtener permiso antes de escanear redes que no te pertenezcan.</p>
                 </div>

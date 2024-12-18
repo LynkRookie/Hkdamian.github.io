@@ -207,7 +207,7 @@
                 <h3>Vector de Red</h3>
                 <div class="expandable-content">
                     <h4>Ataques Activos</h4>
-                    <p> Implica interacción directa con los sistemas objetivo.</p>
+                    <p> Es la infeccion por codigos malisiosos, saboteando el correcto funcionamiento de las redes.</p>
                     <ul>
                         <li>Ejemplos: Escaneo de puertos, ataques de fuerza bruta, explotación de vulnerabilidades conocidas.</li>
                         <li>Más fácil de detectar debido a la actividad generada en la red.</li>
@@ -220,7 +220,7 @@
                     </ul>
                     <h4>Ataques Pasivos</h4>
                     <p>
-                        No implica interacción directa con los sistemas objetivo.
+                        Es toda intercepción de datos o clonación,mediante la implantacion de virus en la red.
                     </p>
                     <ul>
                         <li>Ejemplos: Sniffing de red, análisis de tráfico, interceptación pasiva de datos.</li>
@@ -439,33 +439,7 @@ nmap --script vuln 192.168.1.1
                     </code></pre>
                 </div>
             </div>
-            <div class="expandable">
-                <h3>Metasploit</h3>
-                <div class="expandable-content">
-                    <p>Framework de pruebas de penetración que facilita el desarrollo, prueba y ejecución de exploits.
-                    </p>
-                    <h4>Comandos básicos:</h4>
-                    <pre><code>
-# Iniciar Metasploit
-msfconsole
-
-# Buscar un exploit
-search [nombre_del_exploit]
-
-# Usar un exploit
-use [ruta_del_exploit]
-
-# Mostrar opciones del exploit
-show options
-
-# Configurar una opción
-set [opción] [valor]
-
-# Ejecutar el exploit
-exploit
-                    </code></pre>
-                </div>
-            </div>
+          
         </section>
 
         <section id="arquitectura">
@@ -879,17 +853,49 @@ nmap -sS -O -sV 192.168.1.1
                     <p>Los sistemas Linux almacenan logs en el directorio /var/log.</p>
                     <h4>Archivos de log importantes:</h4>
                     <ul>
-                        <li>/var/log/auth.log o /var/log/secure</li>
-                        <li>/var/log/syslog</li>
-                        <li>/var/log/apache2/access.log</li>
+                        <li>/var/log/auth.log</li>
+                        <li>/var/log/debug</li>
+                        <li>/var/log/kernel.log</li>
+                        <li>/var/log/dmesg</li>
+                        <li>/var/log/messages</li>
+                        <li>/var/log/faillog</li>
+                        <li>/var/log/btmp</li>
+                        <li>/var/log/wtmp</li>
+                        <li>/var/log/cron</li>
                     </ul>
-                    <p>Herramientas: grep, awk, journalctl (para sistemas con systemd)</p>
+                    <p>less: Utilidad que permite leer ficheros de texto en Linux</p>
+                    <p>zless: Comando que permite visualizar ficheros comprimidos por el sistema de rotación de logs</p>
+                    <p>tail: Utilidad que sirve para mostrar las 10 últimas líneas de un log o fichero de texto</p>
+                    <p>head: Programa para visualizar las 10 primeras líneas de un log o fichero de texto.</p>
+
+                    <p>Consultas en kali linux en el terminal</p>
                     <pre><code>
-        # Buscar intentos de inicio de sesión fallidos
-        grep "Failed password" /var/log/auth.log
-        
-        # Monitorear logs en tiempo real
-        tail -f /var/log/syslog
+                       * /var/log/auth.log
+                        Registra intentos de inicio de sesión y eventos de seguridad.
+                        
+                       * /var/log/debug
+                        Guarda información detallada para solucionar problemas.
+                        
+                       * /var/log/kernel.log
+                        Mensajes generados por el núcleo del sistema.
+                        
+                       * /var/log/dmesg
+                        Registra eventos del núcleo, especialmente durante el arranque.
+                        
+                       * /var/log/messages
+                        Registros generales del sistema y aplicaciones.
+                        
+                       * /var/log/faillog
+                        Historial de intentos de inicio de sesión fallidos.
+                        
+                       * /var/log/btmp
+                        Registra intentos de inicio de sesión fallidos (en formato binario).
+                        
+                       * /var/log/wtmp
+                        Historial de inicios y cierres de sesión exitosos.
+                        
+                       * /var/log/cron
+                        Guarda registros de tareas programadas por cron.
                     </code></pre>
                     <p>Consideraciones: Configurar rotación de logs para evitar que ocupen todo el espacio en disco.</p>
                 </div>

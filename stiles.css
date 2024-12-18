@@ -305,6 +305,7 @@ code {
   }
 }
 
+/* Styles for devices similar to Xiaomi X3 Pro */
 @media (min-width: 1080px) and (max-width: 1200px) and (min-height: 2400px) and (max-height: 2800px) and (min-resolution: 395dpi) {
   body {
     font-size: 18px;
@@ -323,11 +324,28 @@ code {
     font-size: 2.2rem;
   }
 
+  nav {
+    max-height: 80vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-color) var(--bg-color);
+  }
+
   nav ul {
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav li {
+    width: 100%;
+    text-align: left;
   }
 
   nav a {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
     padding: 0.7rem 1.2rem;
     font-size: 1.1rem;
   }
@@ -358,3 +376,17 @@ code {
     animation-duration: 1.5s;
   }
 }
+
+nav::-webkit-scrollbar {
+  width: 6px;
+}
+
+nav::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+nav::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+  border-radius: 3px;
+}
+
